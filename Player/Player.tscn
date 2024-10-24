@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://deav5x6s6i4f4"]
+
+[ext_resource type="Script" path="res://Script/Player.gd" id="1_mdyen"]
+[ext_resource type="Script" path="res://Player/StaminaUI.gd" id="2_1ek5h"]
+[ext_resource type="Script" path="res://Player/HealthUI.gd" id="3_adxlm"]
+[ext_resource type="Script" path="res://Player/Health.gd" id="4_oy7co"]
+[ext_resource type="Script" path="res://Player/Stamina.gd" id="5_b0vvh"]
+[ext_resource type="Script" path="res://Script/Gravity.gd" id="6_btejf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_30ve0"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health", "stamina")]
+script = ExtResource("1_mdyen")
+health = NodePath("Health")
+stamina = NodePath("Stamina")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_30ve0")
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("4_oy7co")
+
+[node name="Stamina" type="Node" parent="."]
+script = ExtResource("5_b0vvh")
+
+[node name="RecoveryCooldown" type="Timer" parent="Stamina"]
+
+[node name="Gravity" type="Node" parent="."]
+script = ExtResource("6_btejf")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthUI" type="ColorRect" parent="Control" node_paths=PackedStringArray("health")]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 628.935
+offset_right = 354.0
+offset_bottom = 632.936
+color = Color(0.737255, 0, 0.0470588, 1)
+script = ExtResource("3_adxlm")
+health = NodePath("../../Health")
+
+[node name="StaminaUI" type="ColorRect" parent="Control" node_paths=PackedStringArray("stamina")]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 638.0
+offset_right = 355.0
+offset_bottom = 642.0
+color = Color(1, 1, 0.0941176, 1)
+script = ExtResource("2_1ek5h")
+stamina = NodePath("../../Stamina")
+
+[connection signal="timeout" from="Stamina/RecoveryCooldown" to="Stamina" method="_on_recovery_cooldown_timeout"]

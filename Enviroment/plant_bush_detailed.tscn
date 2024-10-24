@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr1b80jnxllkd"]
+
+[ext_resource type="PackedScene" uid="uid://c1a6bkxln0hc3" path="res://fbx/KenneyEnviroment/plant_bushDetailed.fbx" id="1_mg573"]
+
+[node name="plant_bushDetailed" instance=ExtResource("1_mg573")]

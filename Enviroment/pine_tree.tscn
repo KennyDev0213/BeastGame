@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddo72s8qywwwo"]
+
+[ext_resource type="PackedScene" uid="uid://d22ubk8fqaimo" path="res://fbx/PineTree/PineTree.fbx" id="1_26hc4"]
+[ext_resource type="Material" uid="uid://dapoolmqmt23k" path="res://fbx/PineTree/Branch.tres" id="2_6pan5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5mw5p"]
+
+[node name="PineTree" instance=ExtResource("1_26hc4")]
+
+[node name="Trunk" parent="RootNode" index="0"]
+surface_material_override/1 = ExtResource("2_6pan5")
+
+[node name="Node3D" type="Node3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 8.3278, 0, 0, 0, 1, 0, 4.74298, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D" index="0"]
+transform = Transform3D(0.57, 0, 0, 0, 0.57, 0, 0, 0, 0.57, 0, 0, 0)
+shape = SubResource("CylinderShape3D_5mw5p")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="2"]
+transform = Transform3D(0.748685, 0, 0, 0, 0.748685, 0, 0, 0, 0.748685, 0, 0, 0)
