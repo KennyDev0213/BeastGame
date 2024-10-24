@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dapoolmqmt23k"]
+
+[ext_resource type="Texture2D" uid="uid://rlb1sxepraq" path="res://fbx/PineTree/PineTree-b1796f8eba29d4784e0ac8ebbd1f4399_pinebranch.png" id="1_dcaub"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.792157, 0.792157, 0.792157, 1)
+albedo_texture = ExtResource("1_dcaub")
